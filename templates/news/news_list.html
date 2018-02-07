@@ -1,5 +1,5 @@
 {% for new in news %}
     <h2><a href="{% url 'new_single' pk=new.id %}">{{ new.title }}</a></h2>
-    <p>{{ new.text_min }}</p>
+    <p>{{ new.text_min|safe }}</p>
     <p>{{ new.created }}</p>
 {% endfor %}

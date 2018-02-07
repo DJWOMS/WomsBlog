@@ -55,3 +55,27 @@ class News(models.Model):
         
     def __str__(self):
         return self.title
+    
+    
+class Commets(models.Model):
+    """Ксласс комментариев к новостям
+    """
+    user = models.ForeignKey(
+        User,
+        verbose_name="Пользователь",
+        on_delete=models.CASCADE)
+    new = models.ForeignKey(
+         News,
+         verbose_name="Новость",
+         on_delete=models.CASCADE)
+    text = models.TextField("Комментарий")
+    created = models.DateTimeField("Дата добавления", auto_now_add=True, null=True)
+    moderation = models.BooleanField("Модерация", default=False)
+
+    class Meta:
+        verbose_name = "Комментарий"
+        verbose_name_plural = "Комментарии"
+
+    def __str__(self):
+        return "{}".format(self.user)
+    
