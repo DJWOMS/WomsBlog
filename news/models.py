@@ -57,7 +57,7 @@ class News(models.Model):
         return self.title
     
     
-class Commets(models.Model):
+class Comments(models.Model):
     """Ксласс комментариев к новостям
     """
     user = models.ForeignKey(

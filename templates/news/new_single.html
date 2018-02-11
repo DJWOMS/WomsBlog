@@ -11,5 +11,22 @@
     Теги - {% for tag in new.tags.all %}
                  {{ tag.title }}
             {% endfor %} <br>
-    Автор: {{ new.user }} - {{ new.created }}
+    Автор: {{ new.user }} - {{ new.created }}  <hr>
+
+    <h4>Комментарии</h4>
+     {% for comment in comments %}
+        Пользователь - {{ comment.user }}<br>
+        {{ comment.text }} <br>
+        Добавлен - {{ comment.created }}<br><br>
+     {% endfor %}
+{#    {% for comment in new.comments_set.all %}#}
+{#        Пользователь - {{ comment.user }}<br>#}
+{#        {{ comment.text }} <br>#}
+{#        Добавлен - {{ comment.created }}<br><br>#}
+{#    {% endfor %}#}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Отправить</button>
+    </form>
 {% endblock content %}
