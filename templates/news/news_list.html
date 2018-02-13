@@ -1,3 +1,6 @@
+<button>Неделя</button>
+<button>Месяц</button>
+<button>Все</button>
 {% for new in news %}
     <h2><a href="{% url 'new_single' pk=new.id %}">{{ new.title }}</a></h2>
     <p>{{ new.text_min|safe }}</p>
