@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from news.models import News, Comments
 from news.forms import CommentForm
+from datetime import datetime, timedelta
+
 
 def news_list(request):
     """Вывод всех новостей
@@ -28,5 +30,22 @@ def new_single(request, pk):
                   {"new": new,
                    "comments": comment,
                    "form": form})
+
+
+def news_filter(request, pk):
+    """ Фильтр статей по дате
+    """
+    news = News.objects.all()
+    if pk == 1:
+        now = datetime.now() - timedelta(minutes=60*24*7)
+        news = news.filter(created__gte=now)
+    elif pk == 2:
+        now = datetime.now() - timedelta(minutes=60*24*30)
+        news = news.filter(created__gte=now)
+    elif pk == 3:
+        news = news
+    
+    return render(request, "news/news_list.html", {"news": news})
+    
 
 
