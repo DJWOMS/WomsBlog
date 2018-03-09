@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,10 +6,17 @@
     <meta name="description" content="{% block desc %}{% endblock desc %}">
     <meta name="keywords" content="{% block keywords %}{% endblock keywords %}">
     <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 </head>
 <body>
-    {% block content %}
+    <div class="page">
+        <input type="text" value="" name="search" placeholder="Поиск...">
+        {% block search %}
 
-    {% endblock content %}
+        {% endblock search %}
+        <div class="main">
+            {% block content %}{% endblock content %}
+        </div>
+    </div>
 </body>
 </html>
