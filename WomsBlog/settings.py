@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     
     'news',
+    'ticket',
 ]
 
 MIDDLEWARE = [
