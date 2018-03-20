@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for ticket in tickets %}
+        <h5>{{ ticket.title }}</h5>
+        <P>{{ ticket.text }}</P>
+        <a href="{% url 'update-ticket' pk=ticket.id %}">Редактировать</a>
+    {% endfor %}
+{% endblock content %}
